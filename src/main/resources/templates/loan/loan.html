@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>loan</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
+</head>
+<body class="container">
+<br/>
+<h1>Loan</h1>
+<br/><br/>
+<div class="with:80%">
+    <form class="form-horizontal" th:action="@{/loan}" th:object="${LoanAccount}" method="post">
+        <input type="hidden" name="id" th:value="*{id}"/>
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">name</label>
+            <div class="col-sm-10">
+                <input type="text" readonly="readonly" class="form-control" name="name" id="name" th:value="name"
+                       placeholder="name"/>
+            </div>
+        </div>
+      
+    
+        <div class="form-group">
+            <label for="cardNum" class="col-sm-2 control-label">cardNum</label>
+            <div class="col-sm-10">
+                <input type="text" readonly="readonly" class="form-control" name="cardNum" id="cardNum" th:value="*{cardNum}" placeholder="cardNum"/>
+            </div>
+        </div>
+        
+         <div class="form-group">
+            <label for="creditDesc" class="col-sm-2 control-label">Credit</label>
+            <div class="col-sm-10">
+                <input type="text" readonly="readonly" class="form-control" name="creditDesc" id="creditDesc" th:value="*{creditDesc}" placeholder="creditDesc"/>
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label for="balance" class="col-sm-2 control-label">loan money</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="balance" id="balance" th:value="0"
+                       placeholder="balance"/>
+            </div>
+        </div>
+        
+        
+         <div class="form-group">
+            <label for="count" class="col-sm-2 control-label">lengh (month)</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="count" id="count" th:value="12"
+                       placeholder="count"/>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" value="Submit" class="btn btn-info"/>
+                &nbsp; &nbsp; &nbsp;
+                <a th:href="@{/dlist}" class="btn btn-info">Back</a>
+            </div>
+
+        </div>
+    </form>
+</div>
+</body>
+</html>

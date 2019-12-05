@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: bank-damo
+
+  datasource:
+    url: jdbc:postgresql://127.0.0.1:5432/postgres
+    username: postgres
+    password: abcd.1234
+    driver-class-name: org.postgresql.Driver
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+    content-type: text/html
+  cloud:
+    zookeeper:
+      connect-string: 192.168.101.81:2181
+      discovery:
+        enabled: true
+        instance-host: 192.168.101.81
+        instance-port: ${server.port}
+logging:
+  level:
+    root: info
+  config: classpath:logback.xml
+server:
+  port: 8201
+  servlet:
+    context-path: /webapp
+
+
+

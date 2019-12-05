@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>DepositAccout</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body class="container">
+<br/>
+<h1>Deposit Account</h1>
+<br/><br/>
+<div class="with:80%">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>cardNum</th>
+            <th>type</th>
+            <th>change</th>
+            <th>balance</th>
+            <th>time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="AccountDetail : ${AccountDetail}">
+            <th scope="row" th:text="${AccountDetail.id}"></th>
+            <td th:text="${AccountDetail.cardNum}"></td>
+            <td th:text="${AccountDetail.type}"></td>
+            <td th:text="${AccountDetail.change}"></td>
+            <td th:text="${AccountDetail.balance}"></td>
+            <td th:text="${AccountDetail.time}"></td>
+                        
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+    	 <a th:href="@{/dlist}" class="btn btn-info">Back</a>
+    </div>
+</div>
+
+</body>
+</html>

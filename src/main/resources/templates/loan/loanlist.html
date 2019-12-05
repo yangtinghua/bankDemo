@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>DepositAccout</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body class="container">
+<script>
+	function toquerycredit() {
+		var doms = document.querySelector("td[name=identityNum]");
+		var identityNum = doms.innerText;
+		window.location.href = 'http://127.0.0.1:8201/webapp/toquerycredit?identityNum=' + identityNum
+/* 		console.log(identityNum);
+		var xhr = new XMLHttpRequest();
+		xhr.onreadstatechange = function (){
+			if(xhr.readyState == 4 && xhr.status == 200){
+				console.log(xhr.responseText)
+				document.innerHtml = res
+			}
+		}
+		var url = 'http://127.0.0.1:8201/webapp/toquerycredit?identityNum=' + identityNum;
+		xhr.open('get',url,true);
+		xhr.setRequestHeader("Content-Type","multipart/form-data");
+		xhr.send({identityNum: identityNum});
+		 */
+		
+		
+	}
+</script>
+<br/>
+<h1>Loan Account</h1>
+<br/><br/>
+<div class="with:80%">
+ 	
+ 		<form class="form-horizontal" th:action="@{/queryLoan}" th:object="${LoanAccount}" method="post">
+		<div class="form-group">
+		
+		    <label for="identityNum" class="col-sm-1 control-label">identityNum</label>
+	        <div class="col-sm-2">
+	            <input type="text" class="form-control" name="identityNum" id="identityNum" placeholder="identityNum"/>
+	        </div>
+	        <label for="cardNum" class="col-sm-1 control-label">cardNum</label>
+	        <div class="col-sm-2">
+	            <input type="text" class="form-control" name="cardNum" id="cardNum" placeholder="cardNum"/>
+	        </div>
+	       
+	        <div class="col-sm-2">
+	            <input type="submit" value="query" class="btn btn-info"/>
+	        </div>
+	    </div>
+	</form>
+ 	
+ 	
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>cardNum</th>
+            <th>identityNum</th>
+            <th>loanLimit</th>
+            <th>credit</th>
+            <th>balance</th>
+            <th>rate</th>
+            <th>interest</th>
+            <th>count</th>
+            <th>beginTime</th>
+            <th>endTime</th>          
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="LoanAccount : ${LoanAccount}">
+            <th scope="row" th:text="${LoanAccount.id}"></th>
+            <td th:text="${LoanAccount.name}"></td>
+            <td th:text="${LoanAccount.cardNum}"></td>
+            <td name="identityNum" th:text="${LoanAccount.identityNum}"></td>
+            <td th:text="${LoanAccount.loanLimit}"></td>
+            <td th:text="${LoanAccount.credit}"></td>
+            <td th:text="${LoanAccount.balance}"></td>
+            <td th:text="${LoanAccount.rate}"></td>
+            <td th:text="${LoanAccount.interest}"></td>
+            <td th:text="${LoanAccount.count}"></td>
+            <td th:text="${LoanAccount.beginTime}"></td>
+            <td th:text="${LoanAccount.endTime}"></td>             
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+    	 <a class="btn btn-info" onclick="toquerycredit()">queryCredit</a>
+    	 
+    </div>
+    
+   <div class="col-sm-2 control-label">
+    	 <a th:href="@{/dlist}" class="btn btn-info">Back</a>
+    </div>
+</div>
+
+</body>
+</html>

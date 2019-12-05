@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>DepositAccout</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+</head>
+<body class="container">
+<br/>
+<h1>Deposit Account</h1>
+<br/><br/>
+<div class="with:80%">
+	<form class="form-horizontal" th:action="@{/queryDeposit}" th:object="${DepositAccount}" method="post">
+		<div class="form-group">
+	        <label for="cardNum" class="col-sm-1 control-label">cardNum</label>
+	        <div class="col-sm-2">
+	            <input type="text" class="form-control" name="cardNum" id="cardNum" placeholder="cardNum"/>
+	        </div>
+	         <label for="password" class="col-sm-1 control-label">password</label>
+	        <div class="col-sm-2">
+	            <input type="password" class="form-control" name="password" id="password" placeholder="password"/>
+	        </div>
+	        <div class="col-sm-2">
+	            <input type="submit" value="query" class="btn btn-info"/>
+	        </div>
+	    </div>
+	</form>
+ 	
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>cardNum</th>
+            <th>identityNum</th>
+            <th>phoneNum</th>
+            <th>balance</th>
+            <th>rate</th>
+            <th>interest</th>
+            <th>endTime</th>
+            <th>count</th>
+            <th>type</th>
+            <th>detail</th>
+            <th>deposit</th>
+            <th>draw</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="DepositAccount : ${DepositAccount}">
+            <th scope="row" th:text="${DepositAccount.id}"></th>
+            <td th:text="${DepositAccount.name}"></td>
+            <td th:text="${DepositAccount.cardNum}"></td>
+            <td th:text="${DepositAccount.identityNum}"></td>
+            <td th:text="${DepositAccount.phoneNum}"></td>
+            <td th:text="${DepositAccount.balance}"></td>
+            <td th:text="${DepositAccount.rate}"></td>
+            <td th:text="${DepositAccount.interest}"></td>
+            <td th:text="${DepositAccount.createTime}"></td>
+            <td th:text="${DepositAccount.count}"></td>
+            <td th:text="${DepositAccount.type}"></td>
+            <td><a th:href="@{/queryDetails(cardNum=${DepositAccount.cardNum})}">detail</a></td>
+            <td><a th:href="@{/toDeposit(id=${DepositAccount.id})}">deposit</a></td>
+            <td><a th:href="@{/toDraw(id=${DepositAccount.id})}">draw</a></td>
+             
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+    	 <a th:href="@{/toAddAccount}" class="btn btn-info">create</a>
+    </div>
+     <div class="col-sm-2 control-label">
+    	 <a th:href="@{/toLoanList}" class="btn btn-info">toLoan</a>
+    </div>
+</div>
+
+</body>
+</html>
